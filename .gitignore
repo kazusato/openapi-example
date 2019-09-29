@@ -1,0 +1,10 @@
+.gradle
+build/
+
+.idea/
+*.iml
+docker/workdir
+
+node_modules/
+openapi-generator/docs/
+openapi-generator/typescript/

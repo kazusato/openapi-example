@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  title: Deployed Resources
+  version: 1.0.0
+servers:
+- url: http://5085f1dae78f:8080/example-api-0.1.0
+  description: Default Server.
+paths:
+  /api/bookinfo:
+    post:
+      operationId: registerBookInfo
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/BookInfo'
+      responses:
+        default:
+          description: Default Response.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookInfo'
+  /api/bookinfo/{bookId}:
+    get:
+      operationId: getBookInfo
+      parameters:
+      - name: bookId
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: integer
+      responses:
+        default:
+          description: Default Response.
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookInfo'
+  /api/booklist:
+    get:
+      operationId: getBookList
+      responses:
+        default:
+          description: Default Response.
+          content:
+            '*/*':
+              schema:
+                type: object
+components:
+  schemas:
+    BookInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        author:
+          type: string
+        publishedYear:
+          type: integer
+        publisher:
+          type: string
